@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
+import mongoose from 'mongoose';
+
+require('dotenv').config(); // expose env variables 
 
 const app = express();
 
@@ -21,6 +24,8 @@ server.listen(8080, () => {
     console.log("Server running on http://localhost:8080");
 });
 
+const MONGO_URL = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASS}@projectscluster.4duvbk1.mongodb.net/?retryWrites=true&w=majority`
 
-
-console.log("test1");
+mongoose.Promise = Promise;
+mongoose.connect(MONGO_URL);
+mongoose.connection.on('error', (error: Error) => console.log(error));
