@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { createUser, getUserByEmail } from 'services/userService';
-import { authentication, randomizer } from 'auth_helpers';
+import { createUser, getUserByEmail } from '../services/userService';
+import { authentication, randomizer } from '../auth_helpers';
 
 export const register = async (req: express.Request, res: express.Response) => {
     try {
