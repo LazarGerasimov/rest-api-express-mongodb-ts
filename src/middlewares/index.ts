@@ -6,7 +6,7 @@ import { getUserBySessionToken } from '../services/userService';
 
 export const isAuthenticated = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
-        const sessionToken = req.cookies['Auth'];
+        const sessionToken = req.cookies['Auth:'];
 
         if (!sessionToken) {
             console.log("403 - Not Authorized");
@@ -22,7 +22,7 @@ export const isAuthenticated = async (req: express.Request, res: express.Respons
 
         merge(req, { identity: existingUser });
         return next();
-        
+
     } catch (error) {
         console.log(error);
         return res.sendStatus(400);
