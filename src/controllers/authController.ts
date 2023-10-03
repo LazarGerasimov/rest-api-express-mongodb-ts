@@ -74,4 +74,4 @@ export const login = async (req: express.Request, res: express.Response) => {
         console.log(error);
         return res.sendStatus(400);
     }
-}
+};
